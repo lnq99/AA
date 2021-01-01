@@ -1,0 +1,63 @@
+\chapter{Технологический раздел}
+\label{cha:impl}
+
+% \section{Требования к программному обеспечению}
+
+
+\section{Средства реализации}
+
+Язык программирования: Python (IPython)
+
+Библиотеки: unittest, timeit, matplotlib, ...
+
+Редактор: Jupyter-Lab
+
+Я использую эти инструменты потому, что они мощные, широко
+используемые и знакомые мне.
+
+
+\section{Листинг кода}
+
+
+\lstinputlisting[
+    language=python,linerange={0-9},
+    caption=Сортировка пузырьком
+    ]{3/inc/code.py}
+
+\vbox{}
+
+\lstinputlisting[
+    language=python,linerange={10-19},
+    caption=Сортировка вставками
+    ]{3/inc/code.py}
+
+\pagebreak
+\lstinputlisting[
+    language=python,linerange={20-80},
+    caption=Сортировка слиянием
+    ]{3/inc/code.py}
+
+\pagebreak
+\section{Описание тестирования}
+
+В таблице \ref{tabular:func_test} приведен функциональные тесты
+для алгоритмов сортировки.
+
+\def\arraystretch{1.2}
+\setlength\tabcolsep{1cm}
+
+\begin{table}[h]
+    \centering
+    \csvreader[tabular=|c|c|,
+        no head,
+        table head=\hline \bfseries Массив & \bfseries Результат \\\hline,
+        late after line=\\\hline]
+        {3/inc/func_test.csv}{}{ \csvcoli & \csvcolii}
+    \caption{\label{tabular:func_test} Функциональные тесты}
+\end{table}
+
+\setlength\tabcolsep{0.5cm}
+
+\section{Вывод}
+
+В этом разделе было рассмотрено код программы и описание тестирования.

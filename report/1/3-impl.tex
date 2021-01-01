@@ -1,0 +1,78 @@
+file:///home/ql/5/AA/report/1/4-impl.tex {"mtime":1602942489127,"ctime":1600808002510,"size":2802,"etag":"35qnnhsac2sc","orphaned":false}
+\chapter{Технологический раздел}
+\label{cha:impl}
+
+\section{Требования к программному обеспечению}
+
+Программа создана в формате записной книжки, в интерактивном режиме пользователь вводит команду в соответствии с инструкциями.
+ПО должно иметь сравнение времени работы алгоритмов и должен быть хорошо протестирован.
+(ПО может быть легко использован программистом)
+
+
+\section{Средства реализации}
+
+Язык программирования: Python (IPython)
+
+Библиотеки: unittest, timeit, matplotlib, ...
+
+Редактор: Jupyter-Lab
+
+Я использую эти инструменты потому, что они мощные, широко используемые и знакомые мне.
+
+
+\section{Листинг кода}
+
+Примечание: я создаю таблицы и инициализирую значение в классе
+Lev - interface
+
+
+\lstinputlisting[
+    language=python,linerange={0-9},
+    caption=Рекурсивная реализация алгоритма Левенштейна
+    ]{1/inc/code.py}
+
+\hbox{}
+
+\lstinputlisting[
+    language=python,linerange={12-21},
+    caption=Матричная реализация алгоритма Левенштейна
+    ]{1/inc/code.py}
+
+\hbox{}
+
+\lstinputlisting[
+    language=python,linerange={24-38},
+    caption=Рекурсивная реализация алгоритма Левенштейна с заполнением матрицы
+    ]{1/inc/code.py}
+
+\hbox{}
+
+\lstinputlisting[
+    language=python,linerange={41-53},
+    caption=Матричная реализация алгоритма Дамерау-Левенштейна
+    ]{1/inc/code.py}
+
+\pagebreak
+\lstinputlisting[
+    language=python,linerange={56-93},
+    caption=Класс интерфейса
+    ]{1/inc/code.py}
+
+\pagebreak
+\section{Описание тестирования}
+
+В таблице \ref{tabular:func_test} приведен функциональные тесты для алгоритмов
+вычисления расстояния Левенштейна и Дамерау — Левенштейна.
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \bfseries Строка 1  & \bfseries Строка 2 & \bfseries Ожидаемый результат
+        \csvreader[no head]{1/inc/func_test.csv}{}
+        {\\\hline \csvcoli&\csvcolii& \csvcoliii \ \csvcoliv}
+        \\\hline
+    \end{tabular}
+    \caption{\label{tabular:func_test} Функциональные тесты}
+\end{table}

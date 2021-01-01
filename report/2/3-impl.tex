@@ -1,0 +1,94 @@
+\chapter{Технологический раздел}
+\label{cha:impl}
+
+% \section{Требования к программному обеспечению}
+
+
+\section{Средства реализации}
+
+Язык программирования: C++
+
+Библиотеки: google test, google benchmark
+
+Редактор: VS Code
+
+Я использую эти инструменты потому, что они мощные, широко используемые и
+хочу изучить фреймворк для тестирования и тестирования на C ++.
+
+
+
+\section{Листинг кода}
+
+Я создал шаблон для матричного типа, сами данные использовал статический двумерный массив.
+Его интерфейс прост в использовании, но код не очень понятен. Для краткости я перечисляю только шаблон Matrix.
+
+
+\lstinputlisting[
+    language=c++,linerange={0-7},
+    caption=Шаблон для матричного типа
+    ]{2/inc/code.h}
+
+\lstinputlisting[
+    language=c++,linerange={10-30},
+    caption=Стандартный алгоритм умножения матриц
+    ]{2/inc/code.h}
+
+\lstinputlisting[
+    language=c++,linerange={32-78},
+    caption=Алгоритм Винограда для умножения матриц
+    ]{2/inc/code.h}
+
+\lstinputlisting[
+    language=c++,linerange={80-130},
+    caption=Алгоритм Винограда для умножения матриц с оптимизацией
+    ]{2/inc/code.h}
+
+
+\section{Описание тестирования}
+
+В таблице \ref{tabular:func_test} приведен функциональные тесты
+для алгоритмов умножения матриц.
+
+\def\arraystretch{1.2}
+\setlength\tabcolsep{0.5cm}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \bfseries Матрица 1  & \bfseries Матрица 2 & \bfseries Ожидаемый результат
+        \\\hline
+        $\begin{pmatrix} 0 & 0 \\ 0 & 0 \\ \end{pmatrix}$
+        &
+        $\begin{pmatrix} 2 & 3 \\ 4 & 4 \\ \end{pmatrix}$
+        &
+        $\begin{pmatrix} 0 & 0 \\ 0 & 0 \\ \end{pmatrix}$
+        \\\hline
+
+        $\begin{pmatrix} 2 & 4 & 3 \\ 1 & -3 & 2 \\ \end{pmatrix}$
+        &
+        $\begin{pmatrix} 2 & -3 \\ 4 & 4 \\ 2 & 3\\ \end{pmatrix}$
+        &
+        $\begin{pmatrix} 26 & 19 \\ -6 & -9 \\ \end{pmatrix}$
+        \\\hline
+
+        $\begin{pmatrix} 2 & -3 \\ 4 & 4 \\ 2 & 3\\ \end{pmatrix}$
+        &
+        $\begin{pmatrix} 2 & 4 & 3 \\ 1 & -3 & 2 \\ \end{pmatrix}$
+        &
+        $\begin{pmatrix} 1 & 17 & 0 \\ 12 & 4 & 20 \\ 7 & -1 & 12 \\ \end{pmatrix}$
+        \\\hline
+
+        $\begin{pmatrix} 0 & 0 \\ 0 & 0 \\ \end{pmatrix}$
+        &
+        $\begin{pmatrix} 0 & 0 \end{pmatrix}$
+        &
+        Exception
+        \\\hline
+    \end{tabular}
+    \caption{\label{tabular:func_test} Функциональные тесты}
+\end{table}
+
+\section{Вывод}
+
+В этом разделе было рассмотрено код программы и описание тестирования.

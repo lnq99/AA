@@ -1,0 +1,105 @@
+file:///home/ql/5/AA/report/1/2-analysis.tex {"mtime":1601500268551,"ctime":1600807992274,"size":3610,"etag":"35obeeqic3ne","orphaned":false}
+\chapter{Аналитический раздел}
+\label{cha:analysis}
+
+В данном разделе будет приведено описание алгоритмов.
+
+
+\section{Описание алгоритмов}
+
+\subsection{Расстояние Левенштейна}
+
+Расстояние Левенштейна определяет минимальное количество операций,
+необходимых для превращения одной последовательности символов в другую.
+Разрешенные действия:
+
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item вставка (I - insert)
+    \item удаление (D - delete)
+    \item замена (R - replace)
+\end{itemize}
+
+
+Расстояние Левенштейна между двумя строками $a, b$ задается выражением $lev_{a,b}(|a|,|b|)$ где
+\\\\
+
+$
+lev_{a,b}(i,j) = \left\{
+    \begin{array}{ll}
+        max(i,j)        \hspace{5.5cm} if \ min(i,j) = 0\\
+        min \left\{
+            \begin{array}{ll}
+                lev_{a,b}(i-1,j) + 1    \\
+                lev_{a,b}(i,j-1) + 1    \hspace{2cm} otherwise\\
+                lev_{a,b}(i-1,j-1) + 1_{(a_i \ne b_i)}\\
+            \end{array}
+            \right.\\
+    \end{array}
+\right.
+$\\\\
+
+где
+$
+1 _ {(a_i \ne b_i)} = \left\{
+    \begin{array}{ll}
+        0 \quad if \ a_i = b_i\\
+        1 \quad otherwise\\
+    \end{array}
+    \right.
+$\\
+
+$lev_{a,b}(i,j)$ -
+расстояние между первыми i символами строки a и первыми j символами строки b
+
+\pagebreak
+\subsection{Расстояние Дамерау-Левенштейна}
+
+Если к списку разрешённых операций расстояния Левенштейна добавить
+транспозицию (два соседних символа меняются местами),
+получается расстояние Дамерау — Левенштейна.
+
+
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item + транспозицию (T - transposition)
+\end{itemize}
+
+Расстояние  Дамерау-Левенштейна между двумя строками $a, b$ задается выражением $d_{a,b}(|a|,|b|)$ где
+\\\\
+$
+d_{a,b}(i,j) = min\left\{
+    \begin{array}{ll}
+        0        \hspace{6cm} if \ i=j=0\\
+        d_{a,b}(i-1,j) + 1    \hspace{2.8cm} if \ i>0\\
+        d_{a,b}(i,j-1) + 1    \hspace{2.8cm} if \ j>0\\
+        d_{a,b}(i-1,j-1) + 1_{(a_i \ne b_i)}
+        \hspace{0.8cm} if \ i,j>0\\
+        d_{a,b}(i-2,j-2) + 1
+        \hspace{1.9cm} if \ i,j>1 \ and \\
+        \hspace{6.2cm} a[i]=b[j-1] \ and \ a[i-1]=b[j]\\
+    \end{array}
+\right.
+$\\\\
+
+где
+$
+1 _ {(a_i \ne b_i)} = \left\{
+    \begin{array}{ll}
+        0 \quad if \ a_i = b_i\\
+        1 \quad otherwise\\
+    \end{array}
+    \right.
+$\\\\
+
+
+Каждый рекурсивный вызов соответствует одному из случаев:
+
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item $d_{a,b}(i-1,j) + 1$ соответствует удалению символа (из $a$ в $b$)
+    \item $d_{a,b}(i,j-1) + 1$ соответствует вставке (из $a$ в $b$)
+    \item $d_{a,b}(i-1,j-1) + 1_{(a_i \ne b_i)}$ соответствие или несоответствие, в зависимости от совпадения символов
+    \item $d_{a,b}(i-2,j-2) + 1$ в случае перестановки двух последовательных символов
+\end{itemize}
+
